@@ -64,4 +64,4 @@ Liquid will print something like (emojis only display for terminals with emoji s
 ✨ hosting on localhost:3000
 🎧 listening for changes
 ```
-If you head over to `localhost:3000`, you should see a title "Click the button." and a button with a number on it. Try clicking it.
+If you head over to `localhost:3000`, you should see a title "Click the Button!" and a button with a number on it. Try clicking it.
