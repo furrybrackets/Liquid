@@ -157,3 +157,35 @@ module.exports = {
 };
 ```
 That's it!
+
+## Using Components in Markdown
+Let's first refer back to our current directory:
+```
+📦Example
+ ┣ 📂components
+ ┃ ┗ 📜Counter.js <-- This is our component!
+ ┣ 📂pages
+ ┃ ┗ 📜index.md <-- Main Markdown file
+ ┣ 📂public
+ ┃ ┗ 📜main.css
+ ┣ 📜liquid.config.tc
+ ┗ 📜package.json
+```
+If we want to use our new component, all we have to do is reference it from any of our pages and it'll get automatically imported.
+
+```markdown
+# Click the Button!
+
+@Counter(0)
+```
+
+### A Quick Divergence into the Liquid Rendering System
+The entire Liquid ecosystem is built out of *renderers*, which is are most abstractly, classes that convert raw data into HTML code. While an actual renderer definition is much more complex, we can illustrate how they work using an abstraction.
+
+Let's say we want to render a number and make it look cool. Let's say in the Markdown we want to denote a number using `&& number &&`. Liquid doesn't provide us with a method of parsing, so we'll have to do it ourselves.
+
+To summarize, here's what we want to do.
+
+* Find numbers and/or text enclosed in `&&`
+* Render out new HTML with the text we found
+* Pass that to Liquid
