@@ -162,10 +162,16 @@ if (argv._[0] == 'init') {
                 error(stderr);
                 throw error;
             };
+            console.log('');
             console.log(
                 'Yarn:'
             );
             console.log(chalk.gray.dim(stdout));
+
+            console.log('');
+
+            console.log(`${chalk.cyan('(try)')} Try entering your new project: ${chalk.gray('cd ' + projectPath.toString())}.
+${chalk.cyan('(try)')} Run ${chalk.gray('yarn dev')} and go to ${chalk.green('https://localhost:3000')}!`);
         })
     });
 }
