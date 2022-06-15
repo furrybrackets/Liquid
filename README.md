@@ -125,7 +125,7 @@ class Counter {
 const __CounterInstance = new Counter(0, document.getElementById('counter__buttonin'));
 __CounterInstance.setup();
 ```
-Looks great! Our code works. Except we have one problem, our button is blank on setup! How do we fix that? With the `start()` method. We can inject some HTML into our element before anything else. Just make one small change ot our code:
+Looks great! Our code works. Except we have one problem, our button is blank on setup! How do we fix that? Just add it to the end of our `setup()` function.
 ```jsx
 // Counter class
 class Counter {
@@ -145,10 +145,7 @@ class Counter {
         this.el.addEventListener('click', () => {
             this.increment();
         });
-    };
-    // here it is!    
-    start() {
-     this.el.innerText = '0';
+        this.el.innerText = '0';
     };
 }
 
