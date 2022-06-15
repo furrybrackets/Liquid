@@ -19,18 +19,18 @@ Install the Liquid CLI tool.
 
 Yarn:
 ```
-yarn add liquid-tool --dev
+yarn add @liquidmd/cli --dev
 ```
 
 NPM:
 ```
-npm i liquid-tool --dev
+npm i @liquidmd/cli --dev
 ```
 
 Use the CLI tool to scaffold your project.
 
 ```
-liquid-tool init
+liquid init
 ```
 The tool will then ask you questions for your `liquid.config` file.
 ```
@@ -54,7 +54,7 @@ It will then generate the necessary folder structure.
 ### Running your new website
 Liquid supports Hot Reload, meaning that it'll automatically rebuild your website when changes are made. To spin up a website, run:
 ```
-liquid-tool dev
+liquid dev
 ```
 Liquid will print something like (emojis only display for terminals with emoji support):
 ```
