@@ -1,8 +1,8 @@
 {
-    "name": "ProjectName",
+    "name": "project",
     "version": "1.0.0",
     "description": "My new Liquid project!",
     "main": "src/main.js",
-    "author": "Peter Johnson <integral.sketch1@gmail.com>",
+    "author": "John Doe",
     "license": "MIT"
 }

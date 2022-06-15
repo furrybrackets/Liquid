@@ -7,6 +7,7 @@ import chalk from 'chalk';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs-extra';
+import { exec } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -153,5 +154,18 @@ if (argv._[0] == 'init') {
         console.log(
             chalk.magenta('(success)') + ' ' + 'Sucessfully created Liquid project at: ' + chalk.gray(projectPath.toString())
         );
+
+        process.chdir(projectPath);
+
+        exec(answers.packman == 'yarn' ? 'yarn' : 'npm', (error, stdout, stderr) => {
+            if (error) {
+                error(stderr);
+                throw error;
+            };
+            console.log(
+                'Yarn:'
+            );
+            console.log(chalk.gray.dim(stdout));
+        })
     });
 }
