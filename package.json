@@ -1,0 +1,19 @@
+{
+  "name": "@liquid/cli",
+  "version": "1.0.0",
+  "description": "Liquid CLI tool to generate Liquid projects.",
+  "main": "main.js",
+  "repository": "https://github.com/furrybrackets/Liquid.git",
+  "author": "Peter Johnson <integral.sketch@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4",
+    "fs-extra": "^10.1.0",
+    "inquirer": "^8.2.4",
+    "yargs": "^17.5.1"
+  },
+  "type": "module",
+  "bin": {
+    "liquid": "./main.js"
+  }
+}
