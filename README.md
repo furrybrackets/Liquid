@@ -182,10 +182,45 @@ If we want to use our new component, all we have to do is reference it from any 
 ### A Quick Divergence into the Liquid Rendering System
 The entire Liquid ecosystem is built out of *renderers*, which is are most abstractly, classes that convert raw data into HTML code. While an actual renderer definition is much more complex, we can illustrate how they work using an abstraction.
 
-Let's say we want to render a number and make it look cool. Let's say in the Markdown we want to denote a number using `&& number &&`. Liquid doesn't provide us with a method of parsing, so we'll have to do it ourselves.
+Let's say we want to render a number and make it a button. Let's say in the Markdown we want to denote a number using `&& number &&`. Liquid doesn't provide us with a method of parsing, so we'll have to do it ourselves.
 
 To summarize, here's what we want to do.
 
 * Find numbers and/or text enclosed in `&&`
 * Render out new HTML with the text we found
 * Pass that to Liquid
+
+Let's define a renderer.
+
+```js
+import { DefineRenderer } from '@liquid/js';
+
+function html(string) {
+ const noAmp = string.replaceAll('&', '');
+ return `<button>${noAmp}</button>`;
+};
+
+const NumberRenderer = new DefineRenderer({
+ match: /\&\&[^\&]*\&\&/gm,
+ render: html
+});
+
+export default NumberRenderer;
+```
+
+Here's what Liquid will do (in approximate JavaScript).
+* Create an array from your matcher
+*  Call the renderer
+*  Call another function with locations and rendered HTML
+
+```js
+// ...
+const matched = Liquid.MarkdownSource.match(RenderInstance.match);
+let rendered = [];
+
+matched.map(el => {
+  rendered.push(RenderInstance.html(el));
+});
+
+Liquid.ProcessRendered(rendered, Liquid.MarkdownSource.exec(RenderInstance.match)); // .exec for indices
+```
