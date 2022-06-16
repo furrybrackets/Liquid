@@ -8,8 +8,11 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^4",
+    "chokidar": "^3.5.3",
     "fs-extra": "^10.1.0",
+    "human-readable": "^0.2.1",
     "inquirer": "^8.2.4",
+    "pretty-ms": "^8.0.0",
     "yargs": "^17.5.1"
   },
   "type": "module",

@@ -1,8 +1,0 @@
-{
-    "name": "project",
-    "version": "1.0.0",
-    "description": "My new Liquid project!",
-    "main": "src/main.js",
-    "author": "John Doe",
-    "license": "MIT"
-}
