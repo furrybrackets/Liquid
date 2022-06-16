@@ -67,11 +67,44 @@ If you head over to `localhost:3000`, you should see a title "Click the Button!"
 
 ## Introduction to Components
 
-Liquid uses MDX, a type of Markdown which allows you to include HTML and JSX inside of your Markdown. Liquid exposes a simple option in your `liquid.config.js` to change the rendering engine (Vue, React, Preact, etc) for your JSX.
+Liquid uses a minimal component model to maximize compatibility. Each component is defined via a class with only a few key functions. By default Liquid uses raw HTML strings but has support for JSX. To enable JSX, do so in your `liquid.config.js`
 
 ```js
-// liquid.config.js
 module.exports = {
-  jsxImportSource: 'react'
-} 
+ name: 'ProjectName',
+ author: 'John Doe',
+ // ...
+ useJSX: true
+}
+```
+JSX example:
+```jsx
+import { Component } from '@liquid/core';
+class Counter extends Component {
+  constructor(count, el) {
+   super(el);
+   this.registerParams([{
+    name: 'count',
+    type: 'number',
+    initialize: count
+   }]);
+  };
+  
+  increment() {
+    this.count++;
+    this.el.innerText = this.count;
+  };
+  
+  setup() {
+   this.el.addEventListener('click', () => {
+    this.increment();
+   });
+   this.el.innerText = '0';
+  }
+}
+
+export defualt {
+ component: Counter,
+ html: <button></button>
+};
 ```
