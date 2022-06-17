@@ -79,7 +79,7 @@ module.exports = {
 ```
 JSX example:
 ```jsx
-import { Component, RegisterComponent } from '@liquid/core';
+import { Component, RegisterComponent } from '@liquidmd/core';
 class Counter extends Component {
   constructor(count, el) {
    super(el);
