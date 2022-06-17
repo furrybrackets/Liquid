@@ -79,14 +79,15 @@ module.exports = {
 ```
 JSX example:
 ```jsx
-import { Component } from '@liquid/core';
+import { Component, RegisterComponent } from '@liquid/core';
 class Counter extends Component {
   constructor(count, el) {
    super(el);
    this.registerParams([{
     name: 'count',
     type: 'number',
-    initialize: count
+    value: count,
+    // or initialize: () => { return count; }
    }]);
   };
   
@@ -103,8 +104,7 @@ class Counter extends Component {
   }
 }
 
-export defualt {
- component: Counter,
- html: <button></button>
-};
+export default RegisterComponent(Component, {
+  rootElement: <button>Click me!</button>
+})
 ```
